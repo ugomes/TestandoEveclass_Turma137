@@ -52,8 +52,8 @@ public class testarEveclassChrome {
 
 
     driver.get("https://testando.eveclass.com/pt");
-    driver.findElement(By.xpath("//div[contains(@class,'header-text')]//a[@type='button']//span[@class='button-text']//span//span[contains(text(),'Começar Agora')]")).click();
     driver.findElement(By.xpath("//span[contains(text(),'Entrar')]")).click();
+    driver.navigate().refresh();
     driver.findElement(By.xpath("//input[@data-vv-as='Email']")).click();
     driver.findElement(By.xpath("//input[@data-vv-as='Email']")).sendKeys(email);
     driver.findElement(By.xpath("//input[@type='password']")).click();
@@ -65,6 +65,7 @@ public class testarEveclassChrome {
 
     @AfterEach
     public void teardown() {
+        driver.manage().deleteAllCookies();
         driver.quit();
 
 
@@ -103,7 +104,7 @@ public class testarEveclassChrome {
         driver.findElement(By.xpath("//textarea[@placeholder='Escreva sua mensagem para nós']")).sendKeys("Preciso de ajuda.... ");
         //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(By.cssSelector("span[data-v-651599fe].button-text > span[data-v-651599fe]")).click();
-        //driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         assertThat(driver.findElement(By.id("swal2-title")).getText(), is("Mensagem enviada com sucesso!"));
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(screenshot, new File("src/test/resources/utils/print/evidencia1.png"));
