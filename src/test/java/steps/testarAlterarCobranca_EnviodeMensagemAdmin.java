@@ -53,7 +53,7 @@ public class testarAlterarCobranca_EnviodeMensagemAdmin {
 
     @And("e digito um email valido")
     public void e_digito_um_email_valido() {
-        driver.findElement(By.xpath("//input[@data-vv-as='Email']")).sendKeys("uelton.gomes@uol.com.br");
+        driver.findElement(By.xpath("//input[@data-vv-as='Email']")).sendKeys("");
 
     }
 
@@ -65,7 +65,7 @@ public class testarAlterarCobranca_EnviodeMensagemAdmin {
 
     @And("digito uma senha valida e clico no botão entrar")
     public void digito_uma_senha_valida() {
-        driver.findElement(By.xpath("//input[@type='password']")).sendKeys("Senha@123");
+        driver.findElement(By.xpath("//input[@type='password']")).sendKeys("");
         driver.findElement(By.xpath("//span[normalize-space()='Entrar']")).click();
     }
 
